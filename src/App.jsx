@@ -1,7 +1,7 @@
 import {useState} from 'react'
 import {ethers} from 'ethers';	
 
-const ADDRESS = "0xd81F648aF556FB7107b4Ee4736c7EF6D46A4C3e2";
+const ADDRESS = "0xa88F8A1B79BDd0719a5a81839fB2dB681D33b8E3";
 const ABI = [
 	{
 		"inputs": [],
@@ -104,28 +104,36 @@ function App() {
 	setVotename(voteName);
 	console.log("Get vote topic: " + voteName);
   }
-  async function getCount(){
-	console.log("Get vote topic: " + await voteContract.getCount() )
+  async function getCountx(){
+	console.log("Result is: " + await voteContract.getCount() )
   }
   async function setUIVotename(){
 	const tx = await voteContract.setVotename(text);
 	await tx.wait();
 	await getVotename();
   }
- 
+  async function countUp(){
+	const tx = await voteContract.countUp();
+	console.log("Number has go up");
+  }
+  async function countDown(){
+	const tx = await voteContract.countDown();
+	console.log("Number has go down");
+  }
+
+  
   return (
     <div>
 	<center>
-		<h1>Vote:{voteName}</h1>
+		{/* <button onClick={() => getVotename()}>Get Vote Name</button> <br /> */}
+		<h1>Vote:{voteName}</h1><br />
 		<button onClick={() => connect()}>Connect</button> <br />
 		<input type="text" onChange={(e)=>setText(e.target.value)} />
 		<button onClick={() => setUIVotename()}>Set Vote Name</button> <br />
-		<button onClick={() => getVotename()}>Get Vote Name</button> <br />
-		<button onClick={() => getCount()}>Get Result</button> <br />
-		<button>Agree</button>
-		<button>Not agree</button> <br />
-		<button>Check Number</button> <br />
-		<button>Result</button> <br />
+		<button onClick={() => countUp()}>Agree</button>
+		<button onClick={() => countDown()}>Not agree</button> <br />
+		<button onClick={() => getCountx()}>Get Result</button> <br />
+		{/* <button onClick={() => alert(Resultx)}>Result</button> */}
 	  </center>
     </div>
   )

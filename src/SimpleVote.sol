@@ -2,8 +2,7 @@
 pragma solidity ^0.8.4;
 
 contract simpleVote {
-    int private agree = 0;
-    int private disagree = 0;
+    int private count;
     string voteName = "Enter";
     int private voterNum = 0;
     int private checkvoterNum = 0;
@@ -21,11 +20,11 @@ contract simpleVote {
     }
 
     function countUp() public {
-        agree += 1;
+        count += 1;
         checkvoterNum++;
     }
     function countDown() public {
-        disagree += 1;
+        count -= 1;
         checkvoterNum++;
     }
     function checkNum() public view returns (bool){
@@ -36,6 +35,6 @@ contract simpleVote {
         }
     }
     function getCount() public view returns (int) {
-         return agree-disagree;
+         return count;
     }
 }
