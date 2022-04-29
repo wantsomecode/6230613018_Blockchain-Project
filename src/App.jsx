@@ -18,7 +18,7 @@ function App() {
         <p>
           Edit <code>App.jsx</code> and save to test HMR updates.
         </p>
-        <p>
+        {/* <p>
           <a
             className="App-link"
             href="https://reactjs.org"
@@ -36,7 +36,7 @@ function App() {
           >
             Vite Docs
           </a>
-        </p>
+        </p> */}
       </header>
     </div>
   )
