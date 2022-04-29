@@ -6,10 +6,19 @@ contract simpleVote {
     string public voteName;
     int private voterNum = 0;
     int private checkvoterNum = 0;
-    constructor(string memory _voteName,int _voterNum){
-        voteName = _voteName;
+
+    function setVotename(string memory _votename)public{
+        voteName = _votename;
+    }
+
+    function setVoterNum(int _voterNum) public {
         voterNum = _voterNum;
     }
+    
+    function getVotename()public view returns (string memory){
+        return voteName;
+    }
+
     function countUp() public {
         count += 1;
         checkvoterNum++;
