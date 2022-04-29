@@ -202,8 +202,31 @@ function App() {
   
   return (
     <div>
-      Hello
-      <button onClick={()=>connect()}>Hello</button>
+	  <p>
+      <button>AddVoter</button>
+	  </p>
+	  <p>
+      <button>DoVote</button>
+	  </p>
+	  <p>
+      <button>EndVote</button>
+	  </p>
+	  <p>
+      <button>StartVote</button>
+	  </p>
+	  <p>
+      <button>OwnerName</button>
+	  </p>
+	  <p>
+      <button>OwnerAddress</button>
+	  </p>
+	  <p>
+      <button>FinalResult</button>
+	  </p>
+	  <p>
+      <button>TotalVoter</button>
+	  <button>TotalVote</button>
+	  </p>
     </div>
   )
 }
