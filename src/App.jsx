@@ -16,6 +16,11 @@ function App() {
           </button>
         </p>
         <p>
+          <button type="button">
+            Start vote
+          </button>
+        </p>
+        <p>
           Edit <code>App.jsx</code> and save to test HMR updates.
         </p>
         {/* <p>
