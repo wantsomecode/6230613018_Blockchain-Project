@@ -1,7 +1,7 @@
-import { useState } from 'react'
+import {useState} from 'react'
 import {ethers} from 'ethers';	
 
-const ADDRESS = "0xca2f27d9304f671301ceCbC06308B5E7d20151FE";
+const ADDRESS = "0xd81F648aF556FB7107b4Ee4736c7EF6D46A4C3e2";
 const ABI = [
 	{
 		"inputs": [],
@@ -87,6 +87,9 @@ const ABI = [
 let voteContract;
 function App() {
 
+	const [text,setText] = useState('');
+	const [voteName, setVotename] = useState('');
+
   async function connect()
   {
     const providers = new ethers.providers.Web3Provider(window.ethereum);
@@ -97,24 +100,27 @@ function App() {
   }
 
   async function getVotename(){
-	console.log("Get vote topic: " + await voteContract.getVotename() )
+	const voteName = await voteContract.getVotename();
+	setVotename(voteName);
+	console.log("Get vote topic: " + voteName);
   }
   async function getCount(){
 	console.log("Get vote topic: " + await voteContract.getCount() )
   }
-  async function setVotename(){
-	const tx = await voteContract.setVotename("Shall we drop this subject?");
+  async function setUIVotename(){
+	const tx = await voteContract.setVotename(text);
 	await tx.wait();
-	console.log(getVotename())
+	await getVotename();
   }
  
   return (
     <div>
 	<center>
-		<h1>Vote:</h1>
+		<h1>Vote:{voteName}</h1>
 		<button onClick={() => connect()}>Connect</button> <br />
+		<input type="text" onChange={(e)=>setText(e.target.value)} />
+		<button onClick={() => setUIVotename()}>Set Vote Name</button> <br />
 		<button onClick={() => getVotename()}>Get Vote Name</button> <br />
-		<button onClick={() => setVotename()}>Set Vote Name</button> <br />
 		<button onClick={() => getCount()}>Get Result</button> <br />
 		<button>Agree</button>
 		<button>Not agree</button> <br />
