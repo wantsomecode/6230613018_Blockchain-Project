@@ -104,8 +104,10 @@ function App() {
 	setVotename(voteName);
 	console.log("Get vote topic: " + voteName);
   }
-  async function getCountx(){
-	console.log("Result is: " + await voteContract.getCount() )
+  async function getCount(){
+	  const x = await voteContract.getCount();
+	  console.log("Result is: " + await voteContract.getCount() )
+	  alert("Result is: " + x);
   }
   async function setUIVotename(){
 	const tx = await voteContract.setVotename(text);
@@ -125,15 +127,15 @@ function App() {
   return (
     <div>
 	<center>
-		{/* <button onClick={() => getVotename()}>Get Vote Name</button> <br /> */}
 		<h1>Vote:{voteName}</h1><br />
 		<button onClick={() => connect()}>Connect</button> <br />
 		<input type="text" onChange={(e)=>setText(e.target.value)} />
 		<button onClick={() => setUIVotename()}>Set Vote Name</button> <br />
 		<button onClick={() => countUp()}>Agree</button>
 		<button onClick={() => countDown()}>Not agree</button> <br />
-		<button onClick={() => getCountx()}>Get Result</button> <br />
-		{/* <button onClick={() => alert(Resultx)}>Result</button> */}
+		<button onClick={() => getCount()}>
+			Get Result
+		</button> <br />
 	  </center>
     </div>
   )
